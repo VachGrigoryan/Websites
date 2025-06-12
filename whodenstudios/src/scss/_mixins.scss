@@ -1,0 +1,44 @@
+// Mixin for responsive font size with auto-calculated tablet size
+@mixin font-size($mobile-size, $desktop-size) {
+  font-size: $mobile-size; // Default for mobile
+  @media (min-width: 768px) and (max-width: 1024px) {
+    // Tablet breakpoint
+    font-size: calc(
+      #{$mobile-size} + (#{$desktop-size} - #{$mobile-size}) * 0.5
+    );
+  }
+  @media (min-width: 1025px) {
+    // Desktop breakpoint
+    font-size: $desktop-size;
+  }
+}
+
+// Mixin for responsive padding with auto-calculated tablet size
+@mixin padding($mobile-padding, $desktop-padding) {
+  padding: $mobile-padding; // Default for mobile
+  @media (min-width: 768px) and (max-width: 1024px) {
+    // Tablet breakpoint
+    padding: calc(
+      #{$mobile-padding} + (#{$desktop-padding} - #{$mobile-padding}) * 0.5
+    );
+  }
+  @media (min-width: 1025px) {
+    // Desktop breakpoint
+    padding: $desktop-padding;
+  }
+}
+
+// Example: Responsive padding for specific directions with auto-calculated tablet size
+@mixin padding-direction($direction, $mobile-padding, $desktop-padding) {
+  padding-#{$direction}: $mobile-padding; // Default for mobile
+  @media (min-width: 768px) and (max-width: 1024px) {
+    // Tablet breakpoint
+    padding-#{$direction}: calc(
+      #{$mobile-padding} + (#{$desktop-padding} - #{$mobile-padding}) * 0.5
+    );
+  }
+  @media (min-width: 1025px) {
+    // Desktop breakpoint
+    padding-#{$direction}: $desktop-padding;
+  }
+}
